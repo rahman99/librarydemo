@@ -12,7 +12,7 @@ import com.demo.simple.model.Book;
 import com.demo.simple.service.BookService;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/api/book")
 public class BookController {
 
 	@Autowired
@@ -41,14 +41,21 @@ public class BookController {
 	@RequestMapping(value="category={category}",method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.FOUND)
 	public Iterable<Book> findByCategory(@PathVariable("category") String category){
-		return bookService.findByCategory(category);
+		return bookService.findByCategoryLike(category);
 	}
 	
 	@RequestMapping(value="/title={title}/category={category}",method=RequestMethod.GET)
 	@ResponseStatus(HttpStatus.FOUND)
 	public Iterable<Book> findByTitleAndCategory(@PathVariable("title") String title, 
 												 @PathVariable("category") String category){
-		return bookService.findByTitleAndCategory(title, category);
+		return bookService.findByTitleOrCategoryLike(title, category);
+	}
+	
+	@RequestMapping(value="/title={title}&category={category}",method=RequestMethod.GET)
+	@ResponseStatus(HttpStatus.FOUND)
+	public Iterable<Book> getTitleAndCategory(@PathVariable("title") String title, 
+												 @PathVariable("category") String category){
+		return bookService.titleAndCategory(title, category);
 	}
 	
 }
