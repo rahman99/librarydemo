@@ -25,6 +25,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
+	@ResponseStatus(HttpStatus.ACCEPTED)
 	public String save(@RequestBody Book b){
 		String value = null;
 		try {

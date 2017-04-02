@@ -7,18 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.ManyToMany;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class BookCollection {
+public class BookInformation{
 
 	@Id @GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 	
-	@ManyToOne
+	@ManyToMany
 	@JoinColumn(name="book_id", unique=true)
 	private List<Book> book = new ArrayList<>();
 	

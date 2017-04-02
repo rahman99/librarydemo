@@ -29,7 +29,7 @@ public class Borrowing {
 	
 	@ManyToOne
 	@JoinColumn(name="member_id", nullable=false)
-	private Member member;
+	private MemberShip member;
 	
 	private Date returnBook;
 
@@ -49,11 +49,11 @@ public class Borrowing {
 		this.book = book;
 	}
 
-	public Member getMember() {
+	public MemberShip getMember() {
 		return member;
 	}
 
-	public void setMember(Member member) {
+	public void setMember(MemberShip member) {
 		this.member = member;
 	}
 

@@ -1,5 +1,7 @@
 package com.demo.simple.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Member {
+public class MemberShip {
 	
 	@Id @GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -17,6 +19,7 @@ public class Member {
 	private String memberId;
 	private String name;
 	private String address;
+	private Date expiredMember;
 	
 	public String getId() {
 		return id;
@@ -42,7 +45,11 @@ public class Member {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public Date getExpiredMember() {
+		return expiredMember;
+	}
+	public void setExpiredMember(Date expiredMember) {
+		this.expiredMember = expiredMember;
+	}
 	
-	
-
 }

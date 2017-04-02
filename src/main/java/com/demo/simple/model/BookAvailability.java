@@ -4,20 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class BookAvailablity {
+public class BookAvailability {
 
 	@Id @GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 	
-	@ManyToMany
-	@JoinColumn(name="book_Collection")
-	private BookCollection bookCollection;
+	@ManyToOne
+	@JoinColumn(name="bookCollection_id")
+	private BookInformation bookInformation;
 	private int numberAvailavle;
 	
 	public String getId() {
@@ -26,11 +26,12 @@ public class BookAvailablity {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public BookCollection getBookCollection() {
-		return bookCollection;
+	
+	public BookInformation getBookInformation() {
+		return bookInformation;
 	}
-	public void setBookCollection(BookCollection bookCollection) {
-		this.bookCollection = bookCollection;
+	public void setBookInformation(BookInformation bookInformation) {
+		this.bookInformation = bookInformation;
 	}
 	public int getNumberAvailavle() {
 		return numberAvailavle;
